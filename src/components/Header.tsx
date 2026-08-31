@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Crown } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -48,21 +48,16 @@ export default function Header() {
     <header className="w-full pt-6 pb-4 px-6 md:px-12 lg:px-16 xl:px-20 flex items-center justify-between z-50 relative">
       {/* Brand Logo */}
       <Link href="/" className="flex items-center gap-3 group">
+        <img
+          src="/emperor-logo.png"
+          alt="Emperor Media Solutions Logo"
+          className="h-10 sm:h-11 w-auto object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)] contrast-110 group-hover:scale-105 transition-transform duration-300"
+        />
         <div className="flex flex-col items-start">
-          <div className="flex items-center gap-2.5">
-            {/* Official Logo Mark */}
-            <Image
-              src="/emperor-logo.png"
-              alt="Emperor Media Solutions Logo"
-              width={34}
-              height={24}
-              className="h-7 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-            />
-            <span className="font-serif font-bold text-2xl tracking-wide text-[#1C1E1B] leading-none">
-              EMPEROR
-            </span>
-          </div>
-          <span className="text-[9px] font-sans font-semibold tracking-[0.28em] text-[#4A4E4B] uppercase mt-0.5 pl-0.5">
+          <span className="font-serif font-bold text-2xl tracking-wide text-[#1C1E1B] leading-none">
+            EMPEROR
+          </span>
+          <span className="text-[9px] font-sans font-semibold tracking-[0.28em] text-[#4A4E4B] uppercase mt-1">
             MEDIA SOLUTIONS
           </span>
         </div>

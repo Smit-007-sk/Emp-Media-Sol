@@ -17,18 +17,13 @@ const offerBreakdown = [
     icon: Gift,
   },
   {
-    title: "Free Custom Domain",
-    desc: "Includes a custom .com or .in domain registration for 1 full year registered in your business name.",
+    title: "Free Custom Slug",
+    desc: "Includes a custom URL slug provided for your business website on our fast cloud infrastructure.",
     icon: Award,
   },
   {
-    title: "Fast Cloud Hosting Included",
-    desc: "Hosted on ultra-fast, SSL-secured cloud servers ensuring 99.9% uptime and fast loading speeds.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Up to 5 Professional Pages",
-    desc: "Home, About Us, Services, Portfolio/Gallery, and Contact page with interactive lead generation forms.",
+    title: "Single Page Website",
+    desc: "High-converting single page landing website layout with interactive lead generation forms.",
     icon: CheckCircle2,
   },
   {
@@ -67,7 +62,7 @@ const steps = [
   {
     num: "05",
     title: "Official Live Launch",
-    desc: "Your website goes live on your custom domain with SSL security.",
+    desc: "Your website goes live with your custom slug and SSL security.",
   },
 ];
 

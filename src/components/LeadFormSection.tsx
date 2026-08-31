@@ -26,24 +26,20 @@ import {
   Palette,
   Layout,
   CheckCircle2,
+  Crown,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const includedItems = [
   {
     icon: Globe,
-    title: "Free Domain 1 Year",
-    subtext: ".com / .in domain for 1 year",
-  },
-  {
-    icon: Server,
-    title: "Free Hosting 1 Year",
-    subtext: "Fast and secure hosting",
+    title: "Free Custom Slug",
+    subtext: "Custom URL slug for your business website",
   },
   {
     icon: FileText,
-    title: "Up to 5 Pages",
-    subtext: "Home, About, Services, Contact & more",
+    title: "Single Page Website",
+    subtext: "High-converting single page website layout",
   },
   {
     icon: MessageSquare,
@@ -260,23 +256,39 @@ export default function LeadFormSection() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const leadPayload = {
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      altPhone: formData.altPhone,
+      businessName: formData.businessName,
+      category: formData.category === "Other / Custom" ? (formData.customCategory || "Other") : formData.category,
+      servicesDescription: formData.servicesDescription,
+      instagram: formData.instagram,
+      facebook: formData.facebook,
+      linkedin: formData.linkedin,
+      selectedFeatures: formData.selectedFeatures,
+      notes: formData.notes,
+    };
+
+    // 1. Post directly to NestJS Backend API (port 4000)
+    try {
+      await fetch('http://localhost:4000/api/clients/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadPayload),
+      });
+    } catch (err) {
+      console.warn('Backend API submit lead warning:', err);
+    }
+
+    // 2. Backup to LocalStorage
     try {
       const submissionRecord = {
         id: Date.now(),
         submittedAt: new Date().toLocaleString(),
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        altPhone: formData.altPhone,
-        businessName: formData.businessName,
-        category: formData.category === "Other / Custom" ? (formData.customCategory || "Other") : formData.category,
-        servicesDescription: formData.servicesDescription,
-        instagram: formData.instagram,
-        facebook: formData.facebook,
-        linkedin: formData.linkedin,
-        selectedFeatures: formData.selectedFeatures,
-        notes: formData.notes,
+        ...leadPayload,
         logoFilesCount: formData.logoFiles.length,
         bannerFilesCount: formData.bannerFiles.length,
       };
@@ -311,13 +323,7 @@ export default function LeadFormSection() {
           <div>
             {/* Tagline */}
             <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/emperor-logo.png"
-                alt="Emperor Media Solutions Logo"
-                width={24}
-                height={18}
-                className="h-5 w-auto object-contain"
-              />
+              <Gift className="w-4 h-4 text-[#A57D3F]" />
               <span className="text-[11px] sm:text-xs font-sans font-bold tracking-[0.2em] text-[#A57D3F] uppercase">
                 LIMITED TIME OFFER
               </span>
@@ -850,7 +856,7 @@ export default function LeadFormSection() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {includedItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -927,14 +933,8 @@ export default function LeadFormSection() {
         className="bg-[#EBE5DA] border border-[#DDD6C8] p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm"
       >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-[#072B1E] text-white flex items-center justify-center shrink-0">
-            <Image
-              src="/emperor-logo.png"
-              alt="Emperor Media Solutions Logo"
-              width={26}
-              height={20}
-              className="h-5 w-auto object-contain brightness-0 invert"
-            />
+          <div className="shrink-0 flex items-center justify-center">
+            <Crown className="w-8 h-8 text-[#072B1E]" />
           </div>
           <div className="flex flex-col">
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1C1E1B]">

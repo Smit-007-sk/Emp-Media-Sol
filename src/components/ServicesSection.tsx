@@ -57,15 +57,15 @@ const services = [
     scoreLabel: "Conversion Rate",
     scoreValue: "99/100",
     shortDesc:
-      "Establish a 5-page high-converting digital storefront with zero development cost.",
+      "Establish a high-converting single page website with zero development cost.",
     fullDesc:
-      "Get a professional, mobile-responsive website built with custom domain, cloud hosting, and SSL security completely free.",
+      "Get a professional, mobile-responsive single page website built with custom slug and SSL security completely free.",
     checklist: [
       "100% Free Development",
-      "Free Custom Domain (.com/.in)",
-      "Fast SSL Cloud Hosting",
+      "Free Custom Business Slug",
       "Mobile & Tablet Responsive",
       "SEO Optimized Structure",
+      "Basic Support 1 Year",
     ],
   },
   {
